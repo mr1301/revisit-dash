@@ -3,9 +3,10 @@ import pandas
 import plotly
 from plotly import graph_objs
 
+
 def to_usd(my_price):
     return "${0:,.2f}".format(my_price)
-    
+
 def top_selling_products(sales_data):
     product_totals = sales_data.groupby(["product"]).sum()
     product_totals = product_totals.sort_values("sales price", ascending=False)
@@ -22,10 +23,11 @@ if __name__ == "__main__":
     # INPUTS
 
     csv_filename =input("please input file name in this format, sales-201710.csv" )  # allow user to specify
-
+    
     csv_filepath = os.path.join(os.path.dirname(__file__), "..", "revisit-dash", csv_filename)
 
     csv_data = pandas.read_csv(csv_filepath)
+    date = "October 2017"
     # CALCULATIONS
     monthly_total = csv_data["sales price"].sum()
 
@@ -34,7 +36,7 @@ if __name__ == "__main__":
     # OUTPUTS
 
     print("-----------------------")
-    print("MONTH: March 2018") # TODO: get month and year
+    print("MONTH:" + date) #  get month and year from report name
 
     print("-----------------------")
     print("CRUNCHING THE DATA...")
